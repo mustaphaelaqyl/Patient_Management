@@ -1,0 +1,23 @@
+CREATE DATABASE patient_management;
+
+USE patient_management;
+
+-- Create doctors table
+CREATE TABLE doctors (
+    id bigint(20) AUTO_INCREMENT PRIMARY KEY  UNSIGNED NOT NULL,
+    name VARCHAR(100) NOT NULL,
+    specialization VARCHAR(100) NOT NULL,
+    phone VARCHAR(100)
+    created_at timestamp NULL DEFAULT NULL
+);
+
+-- Create patients table with a foreign key to doctors
+CREATE TABLE patients (
+    id bigint(20) AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    date DATE NOT NULL,
+    phone VARCHAR(100),
+    doctor_id INT,
+    created_at timestamp NULL DEFAULT NULL
+    FOREIGN KEY (doctor_id) REFERENCES doctors(id)
+);
